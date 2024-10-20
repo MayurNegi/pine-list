@@ -1,0 +1,14 @@
+.customer-card {
+	padding: 1rem;
+	border-bottom: 0.5px solid grey;
+}
+
+.customer-name {
+	font-weight: bold;
+	font-size: 1.5rem;
+	color: grey;
+}
+
+.customer-title {
+	color: grey;
+}

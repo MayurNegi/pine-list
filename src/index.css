@@ -20,7 +20,6 @@ body {
 
 .customer-list-container {
 	flex-grow: 1;
-	overflow: hidden;
 	min-width: 400px;
 	border-right: 1px solid #e5e7eb;
 }
