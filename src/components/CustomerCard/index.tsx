@@ -18,8 +18,6 @@ export const CustomerCard = memo(
     const name = `${firstName} ${lastName}`;
     const title = `${address.address} ${address.city} ${address.state} ${address.postalCode} ${address.country}`;
 
-    console.log('customer Card');
-
     const isSelected = selectedCustomer?.id === customer.id;
 
     return (
