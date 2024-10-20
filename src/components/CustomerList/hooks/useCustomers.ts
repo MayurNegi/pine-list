@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Customer } from '../../../services/types';
 import { Api } from '../../../services/Api';
 
-const PAGE_LIMIT = 30;
+const PAGE_LIMIT = 15;
 
 export const useCustomers = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -17,7 +17,10 @@ export const useCustomers = () => {
         pageNo: pageNumRef.current,
         limit: PAGE_LIMIT,
       });
-      setCustomers((prevCustomers) => [...prevCustomers, ...newCustomers]);
+      setCustomers((prevCustomers) => [
+        ...prevCustomers,
+        ...newCustomers.users,
+      ]);
       setError(null);
     } catch (error) {
       setError('Failed to load customers. Please try again later.');

@@ -1,4 +1,4 @@
-import { Customer, CustomerImage } from './types';
+import { CustomerImage, CustomerResponse } from './types';
 
 export const Api = {
   fetchCustomersList: ({
@@ -7,9 +7,10 @@ export const Api = {
   }: {
     pageNo: number;
     limit: number;
-  }): Promise<Customer[]> => {
+  }): Promise<CustomerResponse> => {
+    const skip = (pageNo - 1) * limit;
     return fetch(
-      `https://jsonplaceholder.typicode.com/users?page=${pageNo}&limit=${limit}`
+      `https://dummyjson.com/users?limit=${limit}&skip=${skip}`
     ).then((data) => data.json());
   },
 

@@ -8,8 +8,9 @@ export const CustomerDetails = ({
 }: {
   selectedCustomer: Customer | null;
 }) => {
-  const { name, address } = selectedCustomer || {};
-  const userAddress = `${address?.city} ${address?.street} ${address?.suite} ${address?.zipcode}`;
+  const { firstName, lastName, address } = selectedCustomer || {};
+  const name = `${firstName} ${lastName}`;
+  const userAddress = `${address?.address} ${address?.city} ${address?.state} ${address?.postalCode} ${address?.country}`;
 
   if (!selectedCustomer) return <Loader loading />;
 

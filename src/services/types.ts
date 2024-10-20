@@ -1,16 +1,23 @@
 export interface Customer {
   id: number;
-  name: string;
-  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
   address: {
-    street: string;
-    suite: string;
+    address: string;
     city: string;
-    zipcode: string;
+    state: string;
+    stateCode: string;
+    postalCode: string;
+    country: string;
   };
-  phone: string;
-  website: string;
+}
+
+export interface CustomerResponse {
+  users: Customer[];
+  total: number;
+  skip: number;
+  limit: number;
 }
 
 export interface CustomerImage {

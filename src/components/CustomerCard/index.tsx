@@ -10,8 +10,9 @@ export const CustomerCard = ({
   selectedCustomer: Customer | null;
   handleCustomerClick: (customer: Customer) => void;
 }) => {
-  const { name, address } = customer;
-  const title = `${address.city} ${address.street} ${address.suite} ${address.zipcode}`;
+  const { firstName, lastName, address } = customer;
+  const name = `${firstName} ${lastName}`;
+  const title = `${address.address} ${address.city} ${address.state} ${address.postalCode} ${address.country}`;
 
   const isSelected = selectedCustomer?.id === customer.id;
 

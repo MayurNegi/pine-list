@@ -5,7 +5,9 @@ import './index.css';
 import { Customer } from './services/types';
 
 function App() {
-  const [selectedCustomer, setSelectedCustomer] = useState<Customer>(null);
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(
+    null
+  );
 
   const handleCustomerClick = (customer: Customer) => {
     setSelectedCustomer(customer);
