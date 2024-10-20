@@ -12,6 +12,9 @@
 .customer-title {
 	color: rgb(37, 36, 36);
 	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .selected {
