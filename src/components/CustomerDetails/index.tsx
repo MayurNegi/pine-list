@@ -1,4 +1,5 @@
 import { Customer } from '../../services/types';
+import { Gallery } from '../Gallery';
 import { Loader } from '../Loader';
 import './styles.css';
 
@@ -20,6 +21,7 @@ export const CustomerDetails = ({
           This is {name}. He lives at {userAddress}.
         </p>
       </div>
+      <Gallery selectedCustomer={selectedCustomer} />
     </div>
   );
 };

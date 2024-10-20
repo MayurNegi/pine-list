@@ -12,3 +12,12 @@ export interface Customer {
   phone: string;
   website: string;
 }
+
+export interface CustomerImage {
+  id: number;
+  author: string;
+  width: number;
+  height: number;
+  url: string;
+  download_url: string;
+}
