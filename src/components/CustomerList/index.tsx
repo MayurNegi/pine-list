@@ -3,16 +3,19 @@ import { CustomerCard } from '../CustomerCard';
 import { Virtuoso } from 'react-virtuoso';
 import { Api } from '../../services/Api';
 import { Customer } from '../../services/types';
+import { Loader } from '../Loader';
+import { ErrorMessage } from '../ErrorMessage';
 
 const PAGE_LIMIT = 30;
 
 export const CustomerList = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const pageNumRef = useRef(1);
 
   const fetchCustomers = async () => {
+    setLoading(true);
     try {
       const newCustomers = await Api.fetchCustomersList({
         pageNo: pageNumRef.current,
@@ -38,15 +41,10 @@ export const CustomerList = () => {
 
   const Footer = () => {
     return (
-      <div
-        style={{
-          padding: '2rem',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        Loading...
-      </div>
+      <>
+        <Loader loading={loading} />
+        <ErrorMessage error={error} />
+      </>
     );
   };
 
