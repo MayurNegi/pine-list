@@ -1,4 +1,4 @@
-import { CustomerCard } from '../CustomerCard';
+import { CustomerCard, CARD_HEIGHT } from '../CustomerCard';
 import { Virtuoso } from 'react-virtuoso';
 import { Loader } from '../Loader';
 import { ErrorMessage } from '../ErrorMessage';
@@ -38,12 +38,14 @@ export const CustomerList = ({
         totalCount={customers.length}
         itemContent={(index: number) => (
           <CustomerCard
+            key={customers[index].id}
             selectedCustomer={selectedCustomer}
             handleCustomerClick={handleCustomerClick}
             customer={customers[index]}
           />
         )}
         endReached={loadMore}
+        fixedItemHeight={CARD_HEIGHT}
         components={{ Footer }}
       />
     </div>

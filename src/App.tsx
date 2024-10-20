@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { CustomerDetails } from './components/CustomerDetails';
 import { CustomerList } from './components/CustomerList';
 import './index.css';
@@ -9,9 +9,9 @@ function App() {
     null
   );
 
-  const handleCustomerClick = (customer: Customer) => {
+  const handleCustomerClick = useCallback((customer: Customer) => {
     setSelectedCustomer(customer);
-  };
+  }, []);
 
   return (
     <div className="app-container">
