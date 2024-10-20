@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Customer } from '../../../services/types';
 import { Api } from '../../../services/Api';
 
@@ -10,7 +10,7 @@ export const useCustomers = () => {
   const [error, setError] = useState<string | null>(null);
   const pageNumRef = useRef(1);
 
-  const fetchCustomers = async () => {
+  const fetchCustomers = useCallback(async () => {
     setLoading(true);
     try {
       const newCustomers = await Api.fetchCustomersList({
@@ -24,16 +24,16 @@ export const useCustomers = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchCustomers();
-  }, []);
+  }, [fetchCustomers]);
 
-  const loadMore = async () => {
+  const loadMore = useCallback(async () => {
     pageNumRef.current += 1;
     fetchCustomers();
-  };
+  }, [fetchCustomers]);
 
   return { customers, loading, error, loadMore };
 };
