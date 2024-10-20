@@ -2,17 +2,25 @@ import { useState } from 'react';
 import { CustomerDetails } from './components/CustomerDetails';
 import { CustomerList } from './components/CustomerList';
 import './index.css';
+import { Customer } from './services/types';
 
 function App() {
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer>(null);
+
+  const handleCustomerClick = (customer: Customer) => {
+    setSelectedCustomer(customer);
+  };
 
   return (
     <div className="app-container">
       <div className="customer-list-container">
-        <CustomerList />
+        <CustomerList
+          handleCustomerClick={handleCustomerClick}
+          selectedCustomer={selectedCustomer}
+        />
       </div>
       <div className="customer-details-container">
-        <CustomerDetails />
+        <CustomerDetails selectedCustomer={selectedCustomer} />
       </div>
     </div>
   );
